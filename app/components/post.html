@@ -1,0 +1,310 @@
+<div class="list-group" ng-controller="PostsCtrl">
+<!-- all the code related to the post form  -->
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog" style="text-align: center">
+      <div class="modal-dialog modal-sm">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Hello Dear User</h4>
+          </div>
+          <div class="modal-body">
+            <p>Please Cordially login to be able to interact with the platform</p>
+          </div>
+          <div class="modal-footer">
+            <center><button type="button" class="btn btn-primary btn-xs" ng-click="login()">Login With Facebook</button></center>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- need something --> 
+        <div id="myModal3" class="modal fade" role="dialog" ng-controller="newPost">
+          <div class="modal-dialog ">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="panel-body">
+                <form class="form-horizontal" name="form" >
+                    <fieldset>
+                        <legend>New Want <span class="contact pull-right">Please all fields are compulsories</span></legend>
+
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label"></label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" ng-model="post_title" id="inputEmail" placeholder="What are you looking for ?" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label"></label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="inputEmail" ng-model="post_description" placeholder="Description..." required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label"></label>
+                            <div class="col-lg-10">
+                                <input type="tel" class="form-control" ng-model="post_phone" id="inputEmail" placeholder="your phone number" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-10">
+                                <div class="form-control">
+                                    <div class="col-lg-3"> add picture
+                                    </div>
+                                    <div class="col-lg-4"> 
+                                        <input 
+                                            type="file" 
+                                            ng-model="post_files" 
+                                            name="files" 
+                                            base-sixty-four-input 
+                                            accept="image/*" 
+                                            minsize="500" 
+                                            maxnum="3" 
+                                        />
+                                    </div>
+                                    
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group" ng-show="false">
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-10">
+                                <select ng-model="post_category" class="form-control" required>
+                                    <option ng-repeat="category in categories" value="Needed">Needed</option>
+                                </select>
+                            </div>
+                        </div> 
+                        <div class="form-group" ng-show="false">
+                            <label for="select" class="col-lg-2 control-label"></label>
+                            <div class="col-lg-10">
+                                <div class="form-control">
+                                    <select ng-model="post_currency" ng-disabled="post_free" class="col-lg-3">
+                                        <option ng-repeat="currency in currencies" value=""></option>
+                                    </select>
+                                    <div class="col-lg-1">
+                                    </div>
+                                    <input type="number" class="col-lg-3" ng-disabled="post_free" 
+                                    ng-model="post_price" placeholder="Price" value="">
+                                    <div class="col-lg-2">
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <input type="checkbox" ng-model="post_free"  >Free
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-2">
+                            </div>
+                            <div class="col-lg-5" ng-init="">
+                                <select ng-model="post_country" required>
+                                    <option ng-repeat="country in countries" value="{{country}}">{{country}}</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-5">
+                                <input type="text" ng-model="post_city" placeholder="in which city ?">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <a href="" class="btn btn-primary btn-xs" ng-click="addPost()">Ask</a><span class="contact">{{postsuccess}}</span>
+                                <a href="" class="btn btn-default btn-xs close" data-dismiss="modal">cancel</a>
+                            </div>
+
+                        </div>
+                    </fieldset>
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div> <!-- end need something -->
+
+<!-- new post --> 
+    <div id="myModal2" class="modal fade" role="dialog" ng-controller="newPost">
+      <div class="modal-dialog ">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="panel-body">
+            <form class="form-horizontal" name="form" >
+                <fieldset>
+                    <legend>New post <span class="contact pull-right">Please all fields are compulsories</span></legend>
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label"></label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" ng-model="post_title" id="inputEmail" placeholder="What are you posting?..." required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label"></label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="inputEmail" ng-model="post_description" placeholder="Description..." required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label"></label>
+                        <div class="col-lg-10">
+                            <input type="tel" class="form-control" ng-model="post_phone" id="inputEmail" placeholder="phone number" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-2"></div>
+                        <div class="col-lg-10">
+                            <div class="form-control">
+                                <div class="col-lg-3">Add Pictures
+                                </div>
+                                <div class="col-lg-4"> 
+                                    <input 
+                                        type="file" 
+                                        ng-model="post_files" 
+                                        name="files" 
+                                        base-sixty-four-input 
+                                        accept="image/*" 
+                                        minsize="500" 
+                                        maxnum="3" 
+                                    />
+                                </div>
+                                
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-lg-2"></div>
+                        <div class="col-lg-10">
+                            <select ng-model="post_category" class="form-control" required>
+                                <option ng-repeat="category in categories" value="{{category}}">{{category}}</option>
+                            </select>
+                        </div>
+                    </div> 
+                    <div class="form-group">
+                        <label for="select" class="col-lg-2 control-label"></label>
+                        <div class="col-lg-10">
+                            <div class="form-control">
+                                <select ng-model="post_currency" ng-disabled="post_free" class="col-lg-3">
+                                    <option ng-repeat="currency in currencies" value="{{currency}}">{{currency}}</option>
+                                </select>
+                                <div class="col-lg-1">
+                                </div>
+                                <input type="number" class="col-lg-3" ng-disabled="post_free" ng-model="post_price" placeholder="Price">
+                                <div class="col-lg-2">
+                                </div>
+                                <div class="col-lg-3">
+                                    <input type="checkbox" ng-model="post_free"  >Free
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-2">
+                        </div>
+                        <div class="col-lg-5" ng-init="">
+                            <select ng-model="post_country" required>
+                                <option ng-repeat="country in countries" value="{{country}}">{{country}}</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-5">
+                            <input type="text" ng-model="post_city" placeholder="in which city ?">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <a href="" class="btn btn-primary btn-xs" ng-click="addPost()">Post</a><span class="contact">{{postsuccess}}</span>
+                            <a href="" class="btn btn-default btn-xs close" data-dismiss="modal">cancel</a>
+                        </div>
+
+                    </div>
+                </fieldset>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div> <!-- end new post -->
+
+    <!-- code for the top bar of the search ask and post -->
+    <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation"class="active"><a href="#search" aria-controls="profile" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> search</a></li>
+            <li role="presentation"><a href="" ng-click="mydata.State ? modaladdask() : connect()"><span class="glyphicon glyphicon-eye-open"></span> ask</a></li>
+            <li role="presentation"><a href=""
+            ng-click="mydata.State ? modaladdpost() : connect()"><span class="glyphicon glyphicon-plus-sign"></span> post</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active" id="search">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <input type="text" ng-model="query" class="form-control" placeholder="Search for Products, People, Services, ...">
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="ask">
+                <div ng-include="'components/askbar.html'" scope="" onload=""></div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="addpost">
+                <div ng-include="'components/postbar.html'" scope="" onload=""></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="list-group-item card" style="padding-top: 16px; background-color: #fff" ng-repeat="post in posts | filter: query | orderBy: '-'">
+        <div class="row-picture">
+            <img class="circle" ng-src="{{post.user.url || 'http://www.appslimited.com/app/themes/default/assets/img/avatar.png'}}" alt="icon">
+        </div>
+        <div class="row-content">
+            <h3 class="list-group-item-heading"><a class="username" href="#profile/user/{{post.user.name}}" >{{post.user.name || 'Anonymous'}}</a><span class="text-muted"> {{post.category ? 'posted on' : 'is looking for'}}</span> <span class="pull-right">
+                    <div class="dropdown">
+                      <a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="mdi-action-settings"></i></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Edit</a></li>
+                        <li><a href="#">Delete</a></li>
+                      </ul>
+                    </div>
+            </span></h3>
+            <div class="list-group-item" >
+                <div class="row-picture1">
+                <h3 class="list-group-item-heading"><a href="#/post/{{post.$id}}">{{post.title}} <span class="category">{{post.category}}</span></a> <span class="pull-right pricecolor">{{post.prix}} {{post.currency}}</span></h3>
+                <img class="img-responsive" ng-src="{{post.pictues}}" alt="icon">
+                </div>
+                <div class="row-content">
+                    <p><a href="" ng-click="mydata.State ? like(post.$id, mydata.User.facebook.cachedUserProfile.name) : connect()" ng-show="post.displayLike"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;like</a>
+                    <a href="" ng-click="mydata.State ? unlike(post.$id, mydata.User.facebook.cachedUserProfile.name) : connect()" ng-show="!post.displayLike"><span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;unlike</a>
+                    &nbsp;{{ post.likes.length }}
+                    &nbsp;&nbsp;&nbsp;
+                    <a href=""><span class="glyphicon glyphicon-comment"></span>&nbsp;comments({{post.commentCount}})</a>&nbsp;&nbsp;&nbsp;
+                    <a href=""><span class="glyphicon glyphicon-share"></span>&nbsp;Share on facebook</a></p>
+                    <p class="list-group-item-text">{{post.description}}</p>
+                </div>
+                <div class="row-footer">
+                    <p> Contacts: <span class="contact"><span class="glyphicon glyphicon-envelope"></span>&nbsp;{{post.user.email}} / <span class="glyphicon glyphicon-earphone"></span>&nbsp;{{post.phone}}</span> <button class="pull-right btn btn-primary btn-xs"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp; add to WishList</button></p>
+                </div>
+            </div>
+            <hr />
+            <div class="list" ng-repeat="comment in post.comments | orderBy: '-'">
+                <p class="text-muted"><span class="text-info">{{comment.user.facebook.displayName || 'Anonymous'}}: </span> {{comment.text}}</p>
+            </div>
+                <img class="img-circle" ng-src="{{ mydata.User.facebook.cachedUserProfile.picture.data.url || 'http://www.appslimited.com/app/themes/default/assets/img/avatar.png'}}" width="30" height="30" alt="icon">
+                <div id="txt">
+                <textarea class="msd-elastic" ng-model="$parent.post_comment" cols="45"  placeholder="{{post.user.name || 'Anonymous'}}: please let me know if your have any question.">
+                </textarea><button class="btn btn-primary btn-xs" ng-click="mydata.State ? addcomment(post.$id) : connect()"><i class="mdi-editor-insert-comment"></i></button>
+                </div>
+        </div>
+    </div>
+    <hr />
+    
+</div>
+

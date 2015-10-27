@@ -1,0 +1,64 @@
+<div ng-controller="PostCtrl">
+<div class='card'>
+	<div class='form-group' style='padding: 16px'>
+		<div class='row'>
+			<img ng-src="{{post.user.url}}" class='col-lg-3 circle' style="width:15%;" >
+			<div class='col-lg-9'>
+				<div class='form-control'><b> {{post.user.name}}</b></div><br>
+				Live in {{post.city}}-{{post.country}}<br><br>
+				<a href="">24 people</a><a href="">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-ok-sign"></span>trust him</a>
+				<a href=""></a>
+			</div>
+		</div>
+	</div> 
+</div><p></p>
+
+
+<div class='card'>
+	<div class="form-group" style="padding: 16px;">
+		<div >
+			<h4><strong class="contact">{{post.title}}</strong></h4>
+			<img ng-src='{{post.pictues}}' class='img-responsive col-lg-10' style="width:50%; height:4%;">
+			<div class='form-control'>{{post.prix}} {{post.currency}} <div class="pull-right"><button class="btn btn-primary btn-xs">
+			<span class="glyphicon glyphicon-shopping-cart"></span> add to WishList
+			</button></div></div>
+			
+
+			<form class="form-inline" role="form">
+				<div class="form-group">
+					<a href="" class="sm">
+						<span class="glyphicon glyphicon-thumbs-up"></span> Like
+					</a>
+				</div>&nbsp;&nbsp;
+				<div class="form-group">
+					<a href="" class="sm">
+						<span class="glyphicon glyphicon-comment"></span> Comment
+					</a>
+				</div>&nbsp;&nbsp;
+				<div class="form-group">
+					<a href="" class="sm">
+						<span class="glyphicon glyphicon-share"></span> Share on facebook
+					</a>
+				</div>
+			</form>
+		</div>
+		<hr style="color:#009688; background-color:#009688;"></hr>
+		<div class='row'>
+			<div class='col-sm-3'><img src='{{post.pictues}}' style='width:60%; height:2%' ></div>
+			<div class="col-sm-9"><a href="">comments({{post.commentCount}})</a>&nbsp;&nbsp;&nbsp;<a href="">Share on facebook-feed</a><p> Contacts:<span class="contact"> {{post.user.email}}/{{post.phone}}</span></p></div>
+		</div><hr>
+		<div class="row">
+			<div class="col-lg-10">
+				<div class='form-control'><b>Price:</b> {{post.prix}} {{post.currency}}</div>
+				<div class='form-control'><b>Location:</b> {{post.city}}-{{post.country}}</div><br>
+				<div class=''><b>Description:</b> {{post.description}}.</div>
+				<hr style=""></hr><br>
+				<div class='form-control'><b>Category:</b> {{post.category}}</div>
+				<div class='form-control'><b>Posted:</b> {{post.date_posted}}</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+</div>
+

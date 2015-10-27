@@ -1,0 +1,23 @@
+<div >
+	<script>
+	$('#myTabs a').click(function (e) {
+	  e.preventDefault()
+	  $(this).tab('show')
+	})
+</script>
+	<div class="row">
+		<div class="col col-sm-3">
+			<div ng-include="'components/leftmenu1.html'" scope="" onload=""></div>
+			<div ng-include="'components/leftmenu2.html'" scope="" onload=""></div>
+		</div>
+		<div class="col col-sm-7">
+
+			<!-- all code related to the content of the home page now(all post and so on) -->
+			<!--<div class="card">-->
+			<div ng-include="'components/post-details-middle.html'" scope="" onload=""></div>
+			
+		</div>
+		<div class="col col-sm-2">
+			<div ng-include="'components/rightmenu.html'" scope="" onload=""></div>
+		</div>
+	</div>

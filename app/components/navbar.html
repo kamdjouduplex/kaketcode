@@ -1,0 +1,38 @@
+
+<div class="navbar  navbar-default navbar-fixed-top" ng-controller="AuthenCtrl">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#/home" style="z-index: 500; font-family: 'Helvetica', Ubuntu;" >MyMarket</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav navbar-left">
+            <li><a href="#/home"><span class="glyphicon glyphicon-home" style="font-size: 18px;"></span></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href=""><span class="glyphicon glyphicon-globe" style="font-size: 18px;"><span class="badge badge-xs" style="background-color:#2199DD; font-size: 12px;">12</span></span></a></li>
+            <li><a href=""><span class="glyphicon glyphicon-shopping-cart" style="font-size: 18px;" ><span class="badge badge-xs" style="background-color:#2199DD; font-size: 12px;">5</span></span></a></li>
+            <li ng-if="!mydata.State"><a href="" style="background-color: #4862A3; margin-top: 0px; color:#fff; text-decoration: bold" ng-click="login()">Login With Facebook</a></li>
+            <li><a href=""> &nbsp;&nbsp;&nbsp;</a></li>
+            
+                <li ng-if="mydata.State"><a class="navbar-brand" href="javascript:void(0)"><img ng-src="{{mydata.User.facebook.cachedUserProfile.picture.data.url}}" class="headimg img-responsive img-circle "></a></li>
+                <li class="dropdown" ng-if="mydata.State">
+                    <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" 
+                    data-toggle="dropdown">{{mydata.User.facebook.cachedUserProfile.name}}<b class="caret"></b></a>
+                    <ul class="dropdown-menu" style="text-align:center">
+                        <li><a href="#/profile/user/{{mydata.User.facebook.cachedUserProfile.name}}">my profile</a></li>
+                        <li><a href="javascript:void(0)">setting</a></li>
+                        <li><button ng-click="logout()" class="btn btn-danger btn-xs">Logout <span class="glyphicon glyphicon-log-out"></span></button></li>
+                    </ul>
+                </li>
+            <li>&nbsp;&nbsp;&nbsp;</li>
+        </ul>
+    </div>
+</div>
+
+<br />
+<br />
+<br />
